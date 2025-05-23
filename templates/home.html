@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Добро пожаловать!</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+<div class="text-center">
     <h1>Добро пожаловать на платформу обмена вещами!</h1>
-    <p>Перейдите на страницу <a href="/ads/">объявлений</a>, чтобы начать.</p>
-</body>
-</html>
+    <p>Перейдите на страницу <a href="{% url 'ad_list' %}" class="btn btn-primary">объявлений</a>, чтобы начать.</p>
+</div>
+{% endblock %}
