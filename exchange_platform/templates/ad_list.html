@@ -1,0 +1,35 @@
+<h1>Объявления</h1>
+<form method="get">
+    <input type="text" name="q" placeholder="Поиск">
+    <select name="category">
+        <option value="">Все категории</option>
+        <option value="electronics">Электроника</option>
+        <option value="clothing">Одежда</option>
+        <option value="books">Книги</option>
+        <option value="other">Другое</option>
+    </select>
+    <select name="condition">
+        <option value="">Все состояния</option>
+        <option value="new">Новый</option>
+        <option value="used">Б/у</option>
+    </select>
+    <button type="submit">Фильтровать</button>
+</form>
+
+{% for ad in page_obj %}
+    <div>
+        <h2>{{ ad.title }}</h2>
+        <p>{{ ad.description }}</p>
+        <p>Состояние: {{ ad.get_condition_display }}</p>
+        <a href="{% url 'create_exchange_proposal' ad.id %}">Предложить обмен</a>
+    </div>
+{% endfor %}
+
+<div>
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+    {% endif %}
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
+    {% endif %}
+</div>

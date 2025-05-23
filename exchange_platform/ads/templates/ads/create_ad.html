@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Создать объявление</title>
+</head>
+<body>
+    <h1>Создать новое объявление</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }} <!-- Выводим форму -->
+        <button type="submit">Создать</button>
+    </form>
+    <a href="{% url 'ad_list' %}">Назад к списку объявлений</a>
+</body>
+</html>
