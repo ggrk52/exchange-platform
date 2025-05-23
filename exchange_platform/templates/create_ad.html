@@ -1,15 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Создать объявление</title>
-</head>
-<body>
-    <h1>Создать новое объявление</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }} <!-- Выводим форму -->
-        <button type="submit">Создать</button>
-    </form>
-    <a href="{% url 'ad_list' %}">Назад к списку объявлений</a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Создать объявление{% endblock %}
+
+{% block content %}
+<h2>Создать новое объявление</h2>
+<form method="post" class="mt-4">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="{{ form.title.id_for_label }}" class="form-label">Заголовок</label>
+        {{ form.title }}
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.description.id_for_label }}" class="form-label">Описание</label>
+        {{ form.description }}
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.image_url.id_for_label }}" class="form-label">URL изображения</label>
+        {{ form.image_url }}
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.category.id_for_label }}" class="form-label">Категория</label>
+        {{ form.category }}
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.condition.id_for_label }}" class="form-label">Состояние</label>
+        {{ form.condition }}
+    </div>
+    <button type="submit" class="btn btn-primary">Создать</button>
+    <a href="{% url 'ad_list' %}" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}
